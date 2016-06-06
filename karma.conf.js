@@ -34,25 +34,10 @@ module.exports = function(config) {
          * The configuration for the karma-webpack plugin.
          * This is very similar to the main webpack.local.config.js.
          */
-        webpack: {
-            module: {
-                loaders: [
-                    {
-                        test: /\.js$/,
-                        exclude: /node_modules/,
-                        loader: 'babel'
-                    }
-                ]
-            },
-            resolve: {
-                // empty string is important: https://github.com/webpack/karma-webpack/issues/33#issuecomment-136720643
-                extensions: [ '', '.js' ],
-                modulesDirectories: [
-                    'node_modules',
-                    'es6'
-                ]
-            }
-        },
+        webpack: Object.assign(
+            { resolve: { extensions: [ '', '.js' ] } },
+            require('./webpack.config.js')
+        ),
 
         webpackMiddleware: {
             noInfo: true

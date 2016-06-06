@@ -15,21 +15,23 @@ export default function () {
                 this.model = new Model({ foo: 'bar' });
             });
 
-            it('should emit `change` event', function (done) {
-                this.model.on('change:foo', function () {
-                    done();
-                });
+            it('should emit `change` event', function () {
+                return new Promise(resolve => {
+                    this.model.on('change:foo', resolve);
 
-                this.model.set({ foo: 'baz' });
+                    this.model.set({ foo: 'baz' });
+                });
             });
 
-            it('should pass proper value to `change` event', function (done) {
-                this.model.on('change:foo', function ({ value }) {
-                    assert.equal(value, 'baz');
-                    done();
-                });
+            it('should pass proper value to `change` event', function () {
+                return new Promise(resolve => {
+                    this.model.on('change:foo', ({ value }) => {
+                        chai.expect(value).to.equal('baz');
+                        resolve();
+                    });
 
-                this.model.set({ foo: 'baz' });
+                    this.model.set({ foo: 'baz' });
+                });
             });
 
             it('should not emit `change` event when value is not changed', function () {

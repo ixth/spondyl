@@ -2,9 +2,6 @@ module.exports = function(config) {
     config.set({
         /**
          * These are the files required to run the tests.
-         *
-         * The `Function.prototype.bind` polyfill is required by PhantomJS
-         * because it uses an older version of JavaScript.
          */
         files: [
             'tests/**/index.js'

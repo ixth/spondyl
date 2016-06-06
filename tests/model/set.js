@@ -38,7 +38,7 @@ export default function () {
                 return new Promise(resolve => {
                     setTimeout(resolve, 20);
 
-                    this.model.on('change:foo', function () {
+                    this.model.on('change:foo', () => {
                         throw new Error('Expected not to emit `change` event');
                     });
 
@@ -50,7 +50,7 @@ export default function () {
                 return new Promise(resolve => {
                     setTimeout(resolve, 20);
 
-                    this.model.on('change:foo', function () {
+                    this.model.on('change:foo', () => {
                         throw new Error('Expected not to emit `change` event');
                     });
 

@@ -1,12 +1,11 @@
 import { EventEmitter2 as Emitter } from 'eventemitter2';
 
 class Model extends Emitter {
-	constructor(...args) {
-        const [ attributes/*: Object*/ = {}, options/*: Object*/ = {} ] = args;
+	constructor(attributes/*: Object*/ = {}, options/*: Object*/ = {}) {
         super();
         this.attributes = {};
         this.set(attributes, options);
-        this.initialize(...args);
+        this.initialize(attributes, options);
 	}
 
     initialize() {

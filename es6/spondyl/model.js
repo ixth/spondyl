@@ -22,6 +22,10 @@ class Model extends Emitter {
         }
     }
 
+    unset(name, options) {
+        this._set(name, { ...options, unset: true });
+    }
+
     _set(name/*: string*/, value/*: any*/, options/*: Object*/) {
         const oldVal = this.get(name);
         if (options.unset) {

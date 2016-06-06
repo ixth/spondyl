@@ -22,19 +22,20 @@ class Model extends Emitter {
         }
     }
 
-    unset(name, options) {
-        this._set(name, { ...options, unset: true });
+    unset(name/*: string*/, options/*: Object*/ = {}) {
+        this._set(name, null, { ...options, unset: true });
     }
 
-    _set(name/*: string*/, value/*: any*/, options/*: Object*/) {
+    _set(name/*: string*/, value/*: any*/, options/*: Object*/ = {}) {
         const oldVal = this.get(name);
+
         if (options.unset) {
             delete this.attributes[name];
         } else {
             this.attributes[name] = value;
         }
 
-        if (!options.silent && value !== oldVal) {
+        if (!options.silent && this.attributes[name] !== oldVal) {
             this.emit(`change:${name}`, { value, oldVal });
         }
     }

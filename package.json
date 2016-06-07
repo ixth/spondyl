@@ -17,6 +17,7 @@
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "eventemitter2": "^1.0.3",
+    "lodash.isequal": "^4.2.0",
     "normalize-css": "^2.3.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",

@@ -25,8 +25,9 @@ export default function () {
 
             it('should pass proper value to `change` event', function () {
                 return new Promise(resolve => {
-                    this.model.on('change:foo', ({ value }) => {
-                        chai.expect(value).to.equal(null);
+                    this.model.on('change:foo', ({ model, value }) => {
+                        chai.expect(value).to.be.undefined;
+                        chai.expect(value).to.be.equal(model.get('foo'));
                         resolve();
                     });
 
